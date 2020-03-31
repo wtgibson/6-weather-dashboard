@@ -1,0 +1,27 @@
+html {
+  /* rem is relative to the fontsize of an element. The default fontsize on most browsers is 16px; */
+
+  font-size: 62.5%; 
+  
+  /* 1rem = 10px */
+
+  /* this makes it a lot easier to calcute rem. 62.5 is 10/16 so our defualt fontsize is relative to user settings. defines what 1 rem is. So now, instead of 10px, we can write 1rem, Instead of 200px, we can write 20rem, etc..
+    
+    You don't have to use this trick, but it can make life a lot easier on us. On our media queries, we can just change the fontsize in our html styling, and everything using rem will change accordingly.
+    */
+}
+
+body {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+#background {
+  background-image: url(https://images.designtrends.com/wp-content/uploads/2015/11/06085041/Ferrari-Car-Back-View-Backgrounds.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 85rem;
+}
+
+#answer-choice {
+    font-size: large;
+}
