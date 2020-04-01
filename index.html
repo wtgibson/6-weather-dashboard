@@ -9,20 +9,22 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- Local CSS -->
     <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
-    <title>Car Quiz</title>
+    <title>Weather Dashboard</title>
 
   </head>
   <body>
     <div class="container-fluid h1 border text-center p-5" style="width: 100%;">
-        Car Quiz
+        Weather Dashboard
     </div>
     <!-- Card -->
     <div class="container-fluid bg-light py-5 border" id="background">
         <div class="row">
             <div class="col-3"></div>
             <div class="card bg-white py-4 col-md-6 col-sm-8">
-                <div class="h2 text-dark text-center" id="time">Time: 50 seconds
+                <div class="h2 text-dark text-center" id="time">-
                 <hr>
                 </div>
                 <div class="h2 text-dark text-center" id="question">-
@@ -31,16 +33,16 @@
                 <div class="card">
                     <div class="border h2 rounded-2 card-body text-center text-secondary p-5" id="answers">
                         <ul class="list-group list-group-flush">
-                            <a class="list-group-item py-5 answer-choice" id="answer0" href="#">a</a>
-                            <a class="list-group-item py-5 answer-choice" id="answer1" href="#">b</a>
-                            <a class="list-group-item py-5 answer-choice" id="answer2" href="#">c</a>
-                            <a class="list-group-item py-5 answer-choice" id="answer3" href="#">d</a>
+                            <a class="list-group-item py-5 answer-choice" id="answer0" href="#">-</a>
+                            <a class="list-group-item py-5 answer-choice" id="answer1" href="#">-</a>
+                            <a class="list-group-item py-5 answer-choice" id="answer2" href="#">-</a>
+                            <a class="list-group-item py-5 answer-choice" id="answer3" href="#">-</a>
                         </ul>
                     </div>
                 </div>
                 <hr>
                 <a class="h1 text-dark text-center" id="start" href="#">
-                    Start Quiz
+                    -
                 </a>
                 <hr>
                 <div class="h1 text-center" id="result">
@@ -48,7 +50,7 @@
                 </div>
                 <hr>
                 <a class="h3 text-center" id="leaderboard-link" href="highscores.html">
-                    View Highscores
+                    -
                 </a>
             </div>
             <div class="col-"></div>    
@@ -60,8 +62,10 @@
     <!-- Local Javascript -->
     <script type="text/javascript" src="script.js"></script>
     <!-- Popper.js -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <!-- Bootstrap JS -->
-    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- Moment JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   </body>
 </html>
