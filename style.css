@@ -15,12 +15,12 @@ body {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
-#background {
+/* #background {
   background-image: url(https://images.designtrends.com/wp-content/uploads/2015/11/06085041/Ferrari-Car-Back-View-Backgrounds.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   height: 85rem;
-}
+} */
 
 #answer-choice {
     font-size: large;
