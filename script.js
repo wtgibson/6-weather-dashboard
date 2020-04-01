@@ -38,14 +38,45 @@ function currentWeather(city) {
       uvData = response.value;
       // Render data to page
       console.log(uvData)
-    });
 
-
+    showCurrentWeather(weatherData, uvData)
   });
-
+ });
 };
 
-// currentWeather(city);
+currentWeather(city);
+
+function showCurrentWeather(weatherData, uvData) {
+
+  var utcSeconds = weatherData.dt;
+  var date = new Date(0);
+  date.setUTCSeconds(utcSeconds);
+  date = date.toLocaleDateString("en-US");
+
+  var Fahrenheit = Math.round((weatherData.main.temp * 9) / 5 - 459.67);
+
+  var uvColor;
+
+  if (uvData  < 3) {
+    uvColor = "bg-success";
+  
+  } else if (uvData > 7) {
+    uvColor = "bg-danger";
+  
+  } else {
+    uvColor = "bg-warning";
+
+  }
+
+  $("#currentCity").text(weatherData.name + " (" + date + ") ");
+  $("#image").append('<img src="https://openweathermap.org/img/wn/' + weatherData.weather[0].icon + '@2x.png" alt="weather icon" width="60px" height="60px">');
+	$("#temp").text("Temperature: " + Fahrenheit + " °F");
+	$("#humid").text("Humidity: " + weatherData.main.humidity + " %");
+	$("#wind").text("Wind Speed: " + weatherData.wind.speed + " MPH");
+	$("#uv").html('UV Index: <span class="text-white rounded-sm ' + uvColor + ' p-2">' + uvData + "</span>");
+};
+
+
 
 function fiveDayForecast(city) {
   
