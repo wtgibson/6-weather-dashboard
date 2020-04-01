@@ -2,7 +2,7 @@
 
 ## Summary 
 
-The purpose of the assignment was to create a timed quiz which leveraged Javascript logic, functions, and variables which dynamically updated the user's score based on their performance, ultimately letting them save their initals and score.
+The purpose of the assignment was to create a web application featuring a weather dashboard which leveraged the OpenWeather API to retrieve data dynamically updated based on the user's city search input.
 
 ```
 User Story
@@ -27,7 +27,7 @@ THEN I am again presented with current and future conditions for that city
 ```
 
 ## Site Picture
-![Site](Assets/06-server-side-apis-homework-demo.png)
+![Site](Assets/images/06-weather-dashboard.png)
 
 ## Technologies Used
 - HTML - used to create elements on the DOM
@@ -41,44 +41,48 @@ THEN I am again presented with current and future conditions for that city
 
 ## Code Snippet
 
-Below is an example of a block of code in the JS file where most of the logic behind the quiz is stored. First I created a function enacted on the user's click on an answer choice checking it against the answer key to the question then displayed whether it was correct or incorrect in the result field and added or subtracted points accordingly. 
+Below is an example of a block of code in the JS file where the information for the 5-Day Forecast is retireved via an AJAX call and appended to the page dynamically based on the user's actions.
 
 ```js
-answersElement.addEventListener("click", function(event) {
-    console.log("answer chosen");
-    var element = event.target;
-    if (element.textContent !== quizQuestions[i].correct) {
-        console.log(element)
-        console.log("Wrong Answer")
-        resultElement.textContent = "Incorrect!";
-        console.log(resultElement.textContent)
-        document.getElementById("result").style.color = 'red';            
-        console.log(resultElement.style.color)
+function fiveDayForecast(city) {
+  
+  
+  var forecastQuery = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + apiKey;
 
-    } else {
-        console.log(element)
-        console.log("Right Answer")
-        resultElement.textContent = "Correct!";
-        console.log(resultElement.textContent)
-        document.getElementById("result").style.color = 'green';            
-        console.log(resultElement.style.color)
-        userScore += 10
-        console.log(userScore)
+  $.ajax({
+    url: forecastQuery,
+    method: "GET"
+  }).then(function (response) {
+    forecastData = response;
+    console.log(forecastData)
+    
+    showForecast(forecastData)
 
-    }
-    if (i < quizQuestions.length - 1) {
-    i++;
-    quiz();
-    } else {
-    clearInterval(timeInterval)    
-    alert("Quiz Complete!");
-    userScore += secondsLeft
-    console.log(userScore)
-    alert(userScore);
-    endQuiz();
-    restartQuiz();
-    }
-});
+  });
+};
+
+function showForecast(forecastData) {
+
+  for (var i = 0; i < 5; i++) {
+    console.log(i)
+
+    var dataIndex = forecastData.list[i * 8 + 4];
+
+    var utcSeconds = dataIndex.dt;
+    var date = new Date(0);
+    date.setUTCSeconds(utcSeconds);
+    date = date.toLocaleDateString("en-US");
+
+    var Fahrenheit = Math.round((dataIndex.main.temp * 9) / 5 - 459.67);
+
+    var cardID = $("#" + i);
+    cardID.html("<h4>" + date + "<h4>");
+    cardID.append('<img src="https://openweathermap.org/img/wn/' + dataIndex.weather[0].icon + '@2x.png" alt="weather icon" width="50px" height="50px">');
+    cardID.append("<p>Temp: " + Fahrenheit + " ℉</p>")
+    cardID.append("<p>Humidity: " + dataIndex.main.humidity + " ℉</p>")
+
+  };
+};
 ```
 
 ## Author Links
