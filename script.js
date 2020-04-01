@@ -1,22 +1,60 @@
 var apiKey = "bd7df40c125eba6e663e93b94b66b391";
 var city = "Danville";
-var cities = [];
 var searchHistory = [];
-var latitude;
-var longitude;
 var forecastData;
 var weatherData;
 var uvData;
-// var today = moment().format("dddd, MMMM Do");
-var today = "2020-03-31"
-// console.log(today);
+var today;
 
 var date;
 
 var checkPrevious = JSON.parse(localStorage.getItem("searchHistory"));
 
+createButtons();
+
 if (checkPrevious !== null) {
 	searchHistory = checkPrevious;
+};
+
+$("#searchBtn").on("click", function(event) {
+  event.preventDefault();
+
+  city = $("#searchEntry").val();
+  console.log(city)
+
+  $("#search")[0].reset();
+  newCity(city);
+
+});
+
+$(".historyButton").on("click", previousCity);
+
+function newCity(city) {
+  if (searchHistory.indexOf(city) == -1) {
+    searchHistory.unshift(city)
+
+    searchHistory = searchHistory.slice(0, 10);
+    localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+    createButtons();
+  }
+
+  currentWeather(city);
+  fiveDayForecast(city);
+};
+
+function previousCity(event) {
+  var selectedCity = $(this).prop("value");
+
+  currentWeather(selectedCity)
+  fiveDayForecast(selectedCity)
+}
+
+function createButtons() {
+  $("#history").empty();
+  searchHistory.forEach(function(name) {
+    $("#history").append('<input class="btn btn-outline-secondary p-2 historyButton" type="button" value="' + name + '" />');
+  })
+
 }
 
 function currentWeather(city) {
@@ -43,8 +81,6 @@ function currentWeather(city) {
   });
  });
 };
-
-currentWeather(city);
 
 function showCurrentWeather(weatherData, uvData) {
 
@@ -76,8 +112,6 @@ function showCurrentWeather(weatherData, uvData) {
 	$("#uv").html('UV Index: <span class="text-white rounded-sm ' + uvColor + ' p-2">' + uvData + "</span>");
 };
 
-
-
 function fiveDayForecast(city) {
   
   
@@ -94,8 +128,6 @@ function fiveDayForecast(city) {
 
   });
 };
-
-fiveDayForecast(city)
 
 function showForecast(forecastData) {
 
@@ -119,3 +151,6 @@ function showForecast(forecastData) {
 
   };
 };
+
+currentWeather(city);
+fiveDayForecast(city);
