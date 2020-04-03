@@ -115,7 +115,7 @@ function showCurrentWeather(weatherData, uvData) {
 function fiveDayForecast(city) {
   
   
-  var forecastQuery = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + apiKey;
+  var forecastQuery = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + apiKey;
 
   $.ajax({
     url: forecastQuery,
