@@ -58,7 +58,7 @@ function createButtons() {
 }
 
 function currentWeather(city) {
-  var currentWeatherQuery = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey;
+  var currentWeatherQuery = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey;
   
   $.ajax({
     url: currentWeatherQuery,
@@ -67,7 +67,7 @@ function currentWeather(city) {
     weatherData = response;
     console.log(weatherData)
 
-    var currentUVQuery = "http://api.openweathermap.org/data/2.5/uvi?appid=" + apiKey + "&lat=" + weatherData.coord.lat + "&lon=" + weatherData.coord.lon;
+    var currentUVQuery = "https://api.openweathermap.org/data/2.5/uvi?appid=" + apiKey + "&lat=" + weatherData.coord.lat + "&lon=" + weatherData.coord.lon;
 
     $.ajax({
       url: currentUVQuery,
